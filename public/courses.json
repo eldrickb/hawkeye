@@ -1,0 +1,34 @@
+[
+	{
+		"id": "cs121",
+		"className": "intro to cs",
+		"prereqs": [],
+		"majorReqs": [
+			"cs121"
+		]
+	},
+	{
+		"id": "cs187",
+		"className": "data structures",
+		"prereqs": [ "cs121"],
+		"majorReqs": [
+			"cs187"
+		]
+	},
+	{
+		"id": "math131",
+		"className": "calc 1",
+		"prereqs": [],
+		"majorReqs": [
+			"math1"
+		]
+	},
+	{
+		"id": "math132",
+		"className": "calc 2",
+		"prereqs": ["math131"],
+		"majorReqs": [
+			"math2"
+		]
+	}
+]
