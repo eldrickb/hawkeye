@@ -2,10 +2,13 @@ import CourseList from "./CourseList";
 import RequirementList from "./RequirementList";
 
 export default class Semester {
-    constructor(name) {
-        this.name = name;
+    constructor(id, semesterJson) {
+        this.id = id;
         this.courses = new CourseList();
         this.reqs = new RequirementList();
+
+        if (semesterJson) {
+        }
     }
 
     addCourse(courseId) {

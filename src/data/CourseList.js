@@ -1,4 +1,4 @@
-import courses from "../public/courses.json";
+import { getCourseData } from "./getData";
 
 export default class CourseList {
     constructor() {
@@ -14,14 +14,11 @@ export default class CourseList {
         return false;
     }
 
-    add(courseId) {
+    addCourseById(courseId) {
         if (courseId) {
-            const matchingCourses = courses.filter(
-                (course) => course.id === courseId,
-            );
+            const match = getCourseData(courseId);
 
-            if (matchingCourses.length === 1) {
-                const match = matchingCourses[0];
+            if (match) {
                 this.courses[courseId] = match;
                 return match;
             }
@@ -29,9 +26,9 @@ export default class CourseList {
         return false;
     }
 
-    remove(id) {
-        if (this.courses[id]) {
-            this.courses[id] = null;
+    removeCourseById(courseId) {
+        if (this.courses[courseId]) {
+            this.courses[courseId] = null;
             return true;
         }
         return false;
@@ -47,13 +44,5 @@ export default class CourseList {
             return this.courses[id];
         }
         return false;
-    }
-
-    static getCourseData(courseId) {
-        const results = courses.filter((course) => course.id === courseId);
-
-        if (results.length === 1) return results[0];
-        else if (results.length > 1) return results;
-        else return false;
     }
 }
