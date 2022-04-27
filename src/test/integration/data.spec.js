@@ -1,6 +1,6 @@
 // <reference types="cypress" />
 
-import Semester from "../../shared/Semester";
+import { Semester } from "../../shared/Semester";
 import Schedule from "../../shared/Semester";
 import RequirementList from "../../shared/RequirementList";
 import Requirement from "../../shared/Requirement";

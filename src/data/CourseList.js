@@ -1,8 +1,13 @@
 import { getCourseData } from "./getData";
 
 export default class CourseList {
-    constructor() {
-        this.courses = [];
+    constructor(courseJson) {
+        this.courses = {};
+
+        if (courseJson) {
+            for (const [key, value] of Object.entries(courseJson.semesters))
+                this.courses[key] = new Requirement(value);
+        }
     }
 
     addCourseObject(course) {
@@ -23,6 +28,7 @@ export default class CourseList {
                 return match;
             }
         }
+
         return false;
     }
 
@@ -44,5 +50,9 @@ export default class CourseList {
             return this.courses[id];
         }
         return false;
+    }
+
+    toJSON() {
+        return this.courses;
     }
 }

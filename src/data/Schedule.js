@@ -1,26 +1,30 @@
-import Semester from "./Semester";
+import { Semester } from "./Semester";
 
 export default class Schedule {
     constructor(scheduleJson) {
-        this.semesters = new Array();
+        this.semesters = {};
+        this.years = {};
 
-        if (!scheduleJson) {
-            this.addSemester("fall21");
-            this.addSemester("spring22");
-        } else {
-            scheduleJson.semesters.forEach((sem) => {});
+        if (scheduleJson) {
+            for (const [key, value] of Object.entries(scheduleJson.semesters))
+                this.semesters[key] = new Semester(value);
         }
     }
 
     addSemester(semesterId) {
         this.semesters[semesterId] = new Semester(semesterId);
+
+        return true;
     }
 
     addCourse(courseId, semesterId) {
         // Add course
-        this.semesters[semesterId].addCourse(courseId);
 
-        this.updateReqs(courseId, semesterId);
+        if (!this.semesters[semesterId]) {
+            if (!this.addSemester(semesterId)) return false;
+        }
+
+        return this.semesters[semesterId].addCourseById(courseId);
     }
 
     //

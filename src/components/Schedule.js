@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import Schedule from "../data/Schedule";
-import Semester from "./Semester";
+import { Semester } from "./Semester";
 
 const ScheduleView = (props) => {
     useEffect(() => {

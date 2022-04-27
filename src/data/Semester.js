@@ -1,24 +1,27 @@
 import CourseList from "./CourseList";
 import RequirementList from "./RequirementList";
 
-export default class Semester {
+export class Semester {
     constructor(id, semesterJson) {
         this.id = id;
         this.courses = new CourseList();
         this.reqs = new RequirementList();
 
         if (semesterJson) {
+            this.id = semesterJson.id;
+
+            this.courses = new CourseList(semesterJson.courses);
+            this.reqs = new RequirementList(semesterJson.reqs);
         }
     }
 
-    addCourse(courseId) {
+    addCourseById(courseId) {
         // check prereqs
-        const course = this.courses.add(courseId);
+        const course = this.courses.addCourseById(courseId);
 
+        // update prereqs
         if (course) {
-            // update prereqs
-            this.reqs.updateReq(course.majorReqs[0], course.id);
-            return true;
+            return this.reqs.updateReqByCourse(course);
         }
 
         return false;
@@ -40,4 +43,16 @@ export default class Semester {
     getReqs() {
         return this.reqs;
     }
+
+    // static createId(semesterId) {
+    //     if (!semesterId.season || !semesterId.year) return false;
+
+    //     semesterId.string =
+    // }
+}
+
+export class ScheduleBuilder {
+    constructor() {}
+
+    setYear(year) {}
 }

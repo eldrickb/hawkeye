@@ -1,17 +1,23 @@
+import { getReqData } from "./getData";
 import Requirement from "./Requirement";
 
 export default class RequirementList {
     constructor(reqsJson) {
-        this.reqs = [];
+        this.reqs = {};
 
-        if (reqsJson)
-            reqsJson.forEach((req) => {
-                this.reqs[req.id] = new Requirement(req);
-            });
+        if (reqsJson) {
+            for (const [key, value] of Object.entries(reqsJson.semesters))
+                this.reqs[key] = new Requirement(value);
+        }
     }
 
-    addReq(req) {
-        if (req) return (this.reqs[req.id] = req);
+    addReqById(reqId) {
+        const req = getReqData(reqId);
+
+        if (req) {
+            this.reqs[req.id] = new Requirement(req);
+            return true;
+        }
 
         return false;
     }
@@ -26,16 +32,19 @@ export default class RequirementList {
         return this.reqs[reqId] ? true : false;
     }
 
-    get(reqId) {
+    get(reqId, createIfMissing = true) {
+        if (!this.reqs[reqId]) {
+            if (createIfMissing && !this.addReqById(reqId)) return false;
+        }
         return this.reqs[reqId];
     }
 
-    updateReqByCourseId(courseId, isAdding = true) {
+    updateReqByCourse(course, isAdding = true) {
         let foundOne = false;
 
-        courseId.prereqs.forEach((reqId) => {
-            if (!foundOne && this.has(reqId)) {
-                this.get(reqId).update(courseId, isAdding);
+        course.majorReqs.forEach((reqId) => {
+            if (!foundOne) {
+                this.get(reqId).update(course, isAdding);
                 foundOne = true;
             }
         });
@@ -44,7 +53,8 @@ export default class RequirementList {
     }
 
     updateReq(reqId, courseId) {
-        this.reqs[reqId].add(courseId);
+        const req = this.get(reqId);
+        return req.update(courseId);
     }
 
     getStatus() {
@@ -59,5 +69,9 @@ export default class RequirementList {
         });
 
         return newList;
+    }
+
+    toJSON() {
+        return this.reqs;
     }
 }

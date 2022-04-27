@@ -9,10 +9,8 @@ export default class Requirement {
         }
     }
 
-    update(courseId, isAdding = true) {
-        const courseData = getCourseData(courseId);
-
-        if (courseData && courseData.majorReqs.includes(this.id)) {
+    update(course, isAdding = true) {
+        if (course && course.majorReqs.includes(this.id)) {
             if (isAdding) this.progress++;
             else if (!isAdding) this.progress--;
 
@@ -24,13 +22,13 @@ export default class Requirement {
         return false;
     }
 
-    getJson() {
-        return {
-            id: this.id,
-            progress: this.progress,
-            target: this.target,
-        };
-    }
+    // toJSON() {
+    //     return {
+    //         id: this.id,
+    //         progress: this.progress,
+    //         target: this.target,
+    //     };
+    // }
 
     clone() {
         return new Requirement(this.getStatus());
