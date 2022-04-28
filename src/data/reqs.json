@@ -1,18 +1,62 @@
 [
-    {
-        "id": "cs121",
-        "target": 1
-    },
-    {
-        "id": "cs187",
-        "target": 1
-    },
-    {
-        "id": "math1",
-        "target": 1
-    },
-    {
-        "id": "math2",
-        "target": 1
-    }
+	{
+		"id": "CS121",
+		"target": 1
+	},
+	{
+		"id": "CS186",
+		"target": 1
+	},
+	{
+		"id": "CS187",
+		"target": 1
+	},
+	{
+		"id": "MATH131",
+		"target": 1
+	},
+	{
+		"id": "MATH132",
+		"target": 1
+	},
+	{
+		"id": "CS220",
+		"target": 1
+	},
+	{
+		"id": "CS230",
+		"target": 1
+	},
+	{
+		"id": "CS240",
+		"target": 1
+	},
+	{
+		"id": "CS250",
+		"target": 1
+	},
+	{
+		"id": "MATH3",
+		"target": 1
+	},
+	{
+		"id": "MATH235",
+		"target": 1
+	},
+	{
+		"id": "CS311",
+		"target": 1
+	},
+	{
+		"id": "E300",
+		"target": 3
+	},
+	{
+		"id": "E400",
+		"target": 3
+	},
+	{
+		"id": "OE",
+		"target": 1
+	}
 ]

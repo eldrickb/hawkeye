@@ -1,34 +1,596 @@
 [
 	{
-		"id": "cs121",
-		"className": "intro to cs",
+		"id": "CS121",
+		"subject": "COMPSCI",
+		"courseNumber": "121",
 		"prereqs": [],
-		"majorReqs": [
-			"cs121"
-		]
+		"majorReqs": ["CS121"],
+		"title": "Introduction to Problem Solving with Computers",
+		"description": "An introductory course in problem solving, using the programming language Java. Focuses on the fundamental concepts of problem solving and on computer implementation. Intended for computer science majors or those applying for the major. Satisfactory completion is a prerequisite for all higher-level computer science courses. Use of a laptop computer required.",
+		"credits": 4
 	},
 	{
-		"id": "cs187",
-		"className": "data structures",
-		"prereqs": [ "cs121"],
-		"majorReqs": [
-			"cs187"
-		]
+		"id": "CS186",
+		"subject": "COMPSCI",
+		"courseNumber": "186",
+		"prereqs": [
+			[ {"id": "CS121", "grade": "C"} ]
+		],
+		"majorReqs": ["CS186"],
+		"title": "Using Data Structures",
+		"description": "This course introduces foundational abstract data types and algorithms. The main focus is on the use of data structures in designing and developing programs to solve problems in a variety of domains. Specific topics include lists, sets, maps, graphs, stacks, queues, searching, and sorting.",
+		"credits": 4
 	},
 	{
-		"id": "math131",
-		"className": "calc 1",
+		"id": "CS187",
+		"subject": "COMPSCI",
+		"courseNumber": "187",
+		"prereqs": [
+			[ {"id": "CS121", "grade": "B"} ],
+			[ {"id": "CS186", "grade": "C"} ]
+		],
+		"majorReqs": ["CS187"],
+		"title": "Programming with Data Structures",
+		"description": "The course introduces and develops methods for designing and implementing abstract data types using the Java programming language. The main focus is on how to implement abstract data collections and their associated operations. Specific implementations include linked structures, recursive structures, binary trees, balanced trees, and hash tables. Algorithm analysis and asymptotic bounding of implementations is a major topic throughout the course. The topics covered in this course are fundamental to programming and are essential to further computer science courses.",
+		"credits": 4
+	},
+	{
+		"id": "CS198C",
+		"subject": "COMPSCI",
+		"courseNumber": "198C",
+		"prereqs": [
+			[ {"id": "CS121", "grade": "B"} ],
+			[ {"id": "CS186", "grade": "C"} ]
+		],
+		"majorReqs": [],
+		"title": "Introduction to the C Programming Language",
+		"description": "This practicum assumes general background and experience in computer programming (such as that provided by COMPSCI 121 or a similar introductory programming course) and some knowledge of data structures. Content will include basic C data types, declarations, expressions, statements, and functions; simple use of macros; some common library calls (such as formatted input/output); basic pointer manipulation using linked lists; and introduction to using standard tools (gcc and make). It is recommended that students planning to take COMPSCI 230 take this class along with COMPSCI 187.",
+		"credits": 1
+	},
+	{
+		"id": "MATH131",
+		"subject": "MATH",
+		"courseNumber": "131",
 		"prereqs": [],
-		"majorReqs": [
-			"math1"
-		]
+		"majorReqs": ["MATH131"],
+		"title": "Calculus I",
+		"description": "Continuity, limits, and the derivative for algebraic, trigonometric, logarithmic, exponential, and inverse functions. Applications to physics, chemistry, and engineering.",
+		"credits": 4
 	},
 	{
-		"id": "math132",
-		"className": "calc 2",
-		"prereqs": ["math131"],
-		"majorReqs": [
-			"math2"
-		]
+		"id": "MATH132",
+		"subject": "MATH",
+		"courseNumber": "132",
+		"prereqs": [
+			[ {"id": "MATH131", "grade": "C"} ]
+		],
+		"majorReqs": ["MATH132"],
+		"title": "Calculus II",
+		"description": "The definite integral, techniques of integration, and applications to physics, chemistry, and engineering. Sequences, series, and power series. Taylor and MacLaurin series.",
+		"credits": 4
+	},
+	{
+		"id": "CHEM111",
+		"subject": "CHEM",
+		"courseNumber": "111",
+		"prereqs": [],
+		"majorReqs": ["Lab"],
+		"title": "General Chemistry for Science and Engineering Majors",
+		"description": "Basic principles of structure and reactivity. Microscopic nature of atoms and molecules; the macroscopic properties of chemical systems. Topics include stoichiometry, thermochemistry, atomic structure, molecular structure, properties of gases.",
+		"credits": 4
+	},
+	{
+		"id": "CHEM112",
+		"subject": "CHEM",
+		"courseNumber": "112",
+		"prereqs": [
+			[ {"id": "CHEM111", "grade": "C-"} ],
+			[ {"id": "CHEM121H", "grade": "C-"} ]
+		],
+		"majorReqs": ["Lab"],
+		"title": "General Chemistry for Science and Engineering Majors",
+		"description": "Continuation of CHEM 111. States of matter, solutions, thermodynamics, equilibrium, kinetics, oxidation-reduction processes, and electrochemical cells.",
+		"credits": 4
+	},
+	{
+		"id": "CHEM121H",
+		"subject": "CHEM",
+		"courseNumber": "121H",
+		"prereqs": [],
+		"majorReqs": ["Lab"],
+		"title": "Honors General Chemistry",
+		"description": "Basic Principles of chemistry. Microscopic nature of atoms and molecules; macroscopic properties of chemical systems. Topics inlcude stoichiometry, atomic and nuclear structure, chemical bonding, molecular structure, gases, and intermolecular forces. More extensive lecture treatment of advanced topics and laboratory work than CHEM 111.",
+		"credits": 4
+	},
+	{
+		"id": "PHYSICS151",
+		"subject": "PHYSICS",
+		"courseNumber": "151",
+		"prereqs": [],
+		"majorReqs": ["Lab"],
+		"title": "General Physics I",
+		"description": "Kinematics, vectors and scalars, Newton's laws of motion, work and energy, impulse and momentum. Conservation laws. Collisions, oscillations, rotational dynamics, waves and sound, fluids, with Lab. Use of calculus in physics; problem-solving methods.",
+		"credits": 4
+	},
+	{
+		"id": "PHYSICS152",
+		"subject": "PHYSICS",
+		"courseNumber": "152",
+		"prereqs": [
+			[ {"id": "PHYSICS151", "grade": "C"}, {"id": "MATH131", "grade": "C"}]
+		],
+		"majorReqs": ["Lab"],
+		"title": "General Physics II",
+		"description": "Heat, kinetic theory, first and second laws of thermodynamics, with lab. Comprehensive study of electricity and magnetism from Coulomb's law to Ampere's law. Applications to basic circuits and ending with AC circuits.",
+		"credits": 4
+	},
+	{
+		"id": "PHYSICS181",
+		"subject": "PHYSICS",
+		"courseNumber": "181",
+		"prereqs": [],
+		"majorReqs": ["Lab"],
+		"title": "Physics I - Mechanics",
+		"description": "A rigorous introductory course in principles of mechanics with emphasis on motion of objects (kinematics), forces, rotation, momentum, energy conservation, and analytical methods to solve physical problems.",
+		"credits": 4
+	},
+	{
+		"id": "PHYSICS182",
+		"subject": "PHYSICS",
+		"courseNumber": "182",
+		"prereqs": [
+			[ {"id": "PHYSICS151", "grade": "C"}, {"id": "MATH131", "grade": "C"}],
+			[ {"id": "PHYSICS181", "grade": "C"}, {"id": "MATH131", "grade": "C"}]
+		],
+		"majorReqs": ["Lab"],
+		"title": "Physics II - Electricity and Magnetism",
+		"description": "A rigorous introductory course in electricity and magnetism with emphasis on electrostatics, currents, circuits, magnetic fields and magnetic induction, ending with Maxwell's equations.",
+		"credits": 4
+	},
+	{
+		"id": "CS220",
+		"subject": "COMPSCI",
+		"courseNumber": "220",
+		"prereqs": [
+			[ {"id": "CS187", "grade": "C"} ]
+		],
+		"majorReqs": ["CS220"],
+		"title": "Programming Methodology",
+		"description": "Development of individual skills necessary for designing, implementing, testing and modifying larger programs, including: design strategies and patterns, using functional and object-oriented approaches, testing and program verification, code refactoring, interfacing with libraries.",
+		"credits": 4
+	},
+	{
+		"id": "CS230",
+		"subject": "COMPSCI",
+		"courseNumber": "230",
+		"prereqs": [
+			[ {"id": "CS187", "grade": "C"} ]
+		],
+		"majorReqs": ["CS230"],
+		"title": "Computer Systems Principles",
+		"description": "Large-scale software systems like Google - deployed over a world-wide network of hundreds of thousands of computers - have become a part of our lives. These are systems success stories - they are reliable, available (\"up\" nearly all the time), handle an unbelievable amount of load from users around the world, yet provide virtually instantaneous results. On the other hand, many computer systems don't perform nearly as well as Google - hence the now-cliche \"the system is down.\" In this class, we study the scientific principles behind the construction of high-performance, scalable systems. The course begins with a discussion of data representation, and moves up the stack from there to the features of modern architectures, assembly languages, and operating system services such as I/O, process, and synchronization.",
+		"credits": 4
+	},
+	{
+		"id": "CS240",
+		"subject": "COMPSCI",
+		"courseNumber": "240",
+		"prereqs": [
+			[ {"id": "CS187", "grade": "C"}, {"id": "MATH132", "grade": "C"}]
+		],
+		"majorReqs": ["CS240"],
+		"title": "Reasoning Under Uncertainty",
+		"description": "Development of mathematical reasoning skills for problems that involve uncertainty. Counting and probability -- basic counting problems, probability definitions, mean, variance, binomial distribution, discrete random variables, continuous random variables, Markov and Chebyshev bounds, Laws of large number, and central limit theorem. Probabilistic reasoning -- conditional probability and odds, Bayes' Law, Markov Chains, Bayesian Network, Markov Decision Processes.",
+		"credits": 4
+	},
+	{
+		"id": "CS250",
+		"subject": "COMPSCI",
+		"courseNumber": "250",
+		"prereqs": [
+			[ {"id": "CS187", "grade": "C"}, {"id": "MATH132", "grade": "C"}]
+		],
+		"majorReqs": ["CS250"],
+		"title": "Introduction to Computation",
+		"description": "Basic concepts of discrete mathematics useful to computer science: set theory, strings and formal languages, propositional and predicate calculus, relations and functions, basic number theory. Induction and recursion: interplay of inductive definition, inductive proof, and recursive algorithms. Graphs, trees, and search. Finite-state machines, regular languages, nondeterministic finite automata, Kleene's Theorem.",
+		"credits": 4
+	},
+	{
+		"id": "MATH233",
+		"subject": "MATH",
+		"courseNumber": "233",
+		"prereqs": [
+			[ {"id": "MATH132", "grade": "C"} ]
+		],
+		"majorReqs": ["MATH3"],
+		"title": "Multivariate Calculus",
+		"description": "Techniques of calculus in two and three dimensions, including vectors, partial derivatives, multiple integrals, line integrals, surface integrals and Green's, Stokes's, and the Divergence Theorem.",
+		"credits": 4
+	},
+	{
+		"id": "MATH235",
+		"subject": "MATH",
+		"courseNumber": "235",
+		"prereqs": [
+			[ {"id": "MATH132", "grade": "C"} ]
+		],
+		"majorReqs": ["MATH235"],
+		"title": "Introduction to Linear Algebra",
+		"description": "Basic concepts of linear algebra. Matrices, determinants, systems of linear equations, vector spaces, linear transformations, and eigenvalues.",
+		"credits": 3
+	},
+	{
+		"id": "STAT240",
+		"subject": "STATISTC",
+		"courseNumber": "240",
+		"prereqs": [],
+		"majorReqs": [],
+		"title": "Introduction to Statistics",
+		"description": "Basics of probability, random variables, binomial and normal distributions, central limit theorem, hypothesis testing, and simple linear regression.",
+		"credits": 4
+	},
+	{
+		"id": "INFO248",
+		"subject": "INFO",
+		"courseNumber": "248",
+		"prereqs": [
+			[ {"id": "CS121", "grade": "C"}, {"id": "STAT240", "grade": "C"} ],
+			[ {"id": "STAT515", "grade": "C"} ]
+		],
+		"majorReqs": [],
+		"title": "Introduction to Data Science",
+		"description": "This course is an introduction to the concepts and skills involved with the collection, management, analysis, and presentation of data sets and the data products that result from the work of data scientists. Privacy, algorithmic bias and ethical issues are also discussed. Students will work with data from the financial, epidemiological, educational, and other domains. The course provides many examples of real-world data that students work with using various software tools.In this course we examine the important problems in Usability, Human Computer Interaction, User Interfaces, and Human Centered Computing. We will examine elements of HCI history, human information processing capabilities, HCI design, user interface prototyping methods and new applications and directions in human computer interaction.",
+		"credits": 4
+	},
+	{
+		"id": "LINGUIST201",
+		"subject": "LINGUIST",
+		"courseNumber": "201",
+		"prereqs": [],
+		"majorReqs": [],
+		"title": "How Language Works: Introduction to Linguistic Theory",
+		"description": "Introduction to the basic methodology and results of modern linguistics. Focus on developing, evaluating, and improving hypotheses concerning the structure of the language user's unconscious linguistic knowledge. Investigation of sentence structure (syntax), sound structure (phonology), word structure (morphology), and meaning (semantics)",
+		"credits": 3
+	},
+	{
+		"id": "CS311",
+		"subject": "COMPSCI",
+		"courseNumber": "311",
+		"prereqs": [
+			[ {"id": "CS187", "grade": "C"}, {"id": "CS250", "grade": "C"}],
+			[ {"id": "CS187", "grade": "C"}, {"id": "MATH455", "grade": "C"}]
+		],
+		"majorReqs": ["CS311"],
+		"title": "Introduction to Algorithms",
+		"description": "The design and analysis of efficient algorithms for important computational problems. Emphasis on the relationships between algorithms and data structures and on measures of algorithmic efficiency. Sorting (heapsort, mergesort, quicksort), searching, graph algorithms. Experimental analysis of algorithms also emphasized. Use of computer required.",
+		"credits": 4
+	},
+	{
+		"id": "CS320",
+		"subject": "COMPSCI",
+		"courseNumber": "320",
+		"prereqs": [
+			[ {"id": "CS220", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Software Engineering",
+		"description": "In this course, students learn and gain practical experience with software engineering principles and techniques. The practical experience centers on a semester-long team project in which a software development project is carried through all the stages of the software life cycle. Topics in this course include requirements analysis, specification, design, abstraction, programming style, testing, maintenance, communication, teamwork, and software project management. Particular emphasis is placed on communication and negotiation skills and on designing and developing maintainable software. Use of computer required. Several written assignments, in-class presentations, and a term project.",
+		"credits": 4
+	},
+	{
+		"id": "CS325",
+		"subject": "COMPSCI",
+		"courseNumber": "325",
+		"prereqs": [
+			[ {"id": "CS186", "grade": "C"} ],
+			[ {"id": "CS187", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Introduction to Human Computer Interaction",
+		"description": "In this course we examine the important problems in Usability, Human Computer Interaction, User Interfaces, and Human Centered Computing. We will examine elements of HCI history, human information processing capabilities, HCI design, user interface prototyping methods and new applications and directions in human computer interaction.",
+		"credits": 3
+	},
+	{
+		"id": "CS326",
+		"subject": "COMPSCI",
+		"courseNumber": "326",
+		"prereqs": [
+			[ {"id": "CS220", "grade": "C"} ],
+			[ {"id": "CS230", "grade": "C"} ],
+			[ {"id": "INFO248", "grade": "C"}, {"id": "CS186", "grade": "C"} ],
+			[ {"id": "INFO248", "grade": "C"}, {"id": "CS187", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Web Programming",
+		"description": "The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards, and programming languages, that aims to replace many of the services traditionally provided by a desktop operating system. This course will study core technologies, concepts, and techniques behind the creation of modern web-based systems and applications.",
+		"credits": 4
+	},
+	{
+		"id": "CS335",
+		"subject": "COMPSCI",
+		"courseNumber": "335",
+		"prereqs": [
+			[ {"id": "CS220", "grade": "C"} ],
+			[ {"id": "CS230", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Inside the Box: How Computers Work",
+		"description": "How computers work, including digital logic, arithmetic, data path, and memory. Students build circuits with prototyping boards; program microcontrollers in assembly language and C to work with various I/O devices.",
+		"credits": 3
+	},
+	{
+		"id": "CS345",
+		"subject": "COMPSCI",
+		"courseNumber": "345",
+		"prereqs": [
+			[ {"id": "CS187", "grade": "C"} ],
+			[ {"id": "INFO248", "grade": "C"}, {"id": "CS186", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Practice and Applications of Data Management",
+		"description": "Computing has become data-driven, and databases are now at the heart of commercial applications. The purpose of this course is to provide a comprehensive introduction to the use of data management systems within the context of various applications. Some of the covered topics include application-driven database design, schema refinement, implementation of basic transactions, data on the web, and data visualization.",
+		"credits": 3
+	},
+	{
+		"id": "CS360",
+		"subject": "COMPSCI",
+		"courseNumber": "360",
+		"prereqs": [
+			[ {"id": "CS230", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Introduction to Computer and Network Security",
+		"description": "This course provides an introduction to the principles and practice of computer and network security. A focus on both fundamentals and practical information will be stressed. The three key topics of this course are cryptography, privacy, and network security. Subtopics include ciphers, hashes, key exchange, security services (integrity, availability, confidentiality, etc.), security attacks, vulnerabilities, anonymous communications, and countermeasures.",
+		"credits": 3
+	},
+	{
+		"id": "CS365",
+		"subject": "COMPSCI",
+		"courseNumber": "365",
+		"prereqs": [
+			[ {"id": "CS230", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Digital Forensics",
+		"description": "This course offers a broad introduction to the forensic investigation of digital devices. We cover the preservation, recovery, harvesting, and courtroom presentation of information from file systems, operating systems, networks, and media files. The primary goal of the class is to understand why and from where information is recoverable in these systems. We also cover relevant issues from law, privacy, and current events.",
+		"credits": 3
+	},
+	{
+		"id": "CS377",
+		"subject": "COMPSCI",
+		"courseNumber": "377",
+		"prereqs": [
+			[ {"id": "CS230", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Operating Systems",
+		"description": "The design and operation of modern computer operating systems. Review of capabilities of typical computer hardware. Topics include command language interpreter (the shell), processes, concurrency, inter-process communication, linking and loading, memory management, transactions, file systems, distributed systems, security, and protection. Programming projects in Java and C.",
+		"credits": 4
+	},
+	{
+		"id": "CS383",
+		"subject": "COMPSCI",
+		"courseNumber": "383",
+		"prereqs": [
+			[ {"id": "CS220", "grade": "C"}, {"id": "CS240", "grade": "C"} ],
+			[ {"id": "CS230", "grade": "C"}, {"id": "CS240", "grade": "C"} ],
+			[ {"id": "CS220", "grade": "C"}, {"id": "STAT515", "grade": "C"} ],
+			[ {"id": "CS230", "grade": "C"}, {"id": "STAT515", "grade": "C"} ]
+		],
+		"majorReqs": ["E300"],
+		"title": "Artificial Intelligence",
+		"description": "The Course explores key concepts of artificial intelligence, including state-space and heuristic search techniques, game playing, knowledge representation, automated planning, reasoning under uncertainty, decision theory and machine learning. We will examine how these concepts are applied in the context of several applications.",
+		"credits": 3
+	},
+	{
+		"id": "MATH300",
+		"subject": "MATH",
+		"courseNumber": "300",
+		"prereqs": [
+			[ {"id": "MATH132", "grade": "C"} ]
+		],
+		"majorReqs": [],
+		"title": "Fundamental Concepts of Mathematics",
+		"description": "The goal of this course is to help students learn the language of rigorous mathematics. Students will learn how to read, understand, devise and communicate proofs of mathematical statements. A number of proof techniques (contrapositive, contradiction, and especially induction) will be emphasized. Topics to be discussed include set theory (Cantor's notion of size for sets and gradations of infinity, maps between sets, equivalence relations, partitions of sets), basic logic (truth tables, negation, quantifiers). Other topics will be included as time allows.",
+		"credits": 4
+	},
+	{
+		"id": "CS403",
+		"subject": "COMPSCI",
+		"courseNumber": "403",
+		"prereqs": [
+			[ {"id": "MATH235", "grade": "C"}, {"id": "CS220", "grade": "C"} ],
+			[ {"id": "MATH235", "grade": "C"}, {"id": "CS230", "grade": "C"} ]
+		],
+		"majorReqs": ["E400"],
+		"title": "Introduction to Robotics: Perception, Mechanics, Dynamics, and Control",
+		"description": "This course covers concepts and methods to understand how robots move and interact with the physical world. We will study how to define robots, describe their state, and control their motion. We will study the representation of three-dimensional movement, mechanisms (kinematics and dynamics), actuators, dynamics-based feedback control, and trajectory optimization. Students will also learn Matlab software to build simulation and analysis tools.",
+		"credits": 3
+	},
+	{
+		"id": "CS420",
+		"subject": "COMPSCI",
+		"courseNumber": "420",
+		"prereqs": [
+			[ {"id": "CS320", "grade": "C"} ],
+			[ {"id": "CS326", "grade": "C"} ]
+		],
+		"majorReqs": ["E400"],
+		"title": "Software Entrepreneurship",
+		"description": "This course is geared towards students interested in developing software that moves from early stage proof-of-concept ideas towards marketable products with societal benefit. The course leverages the expertise of the Entrepreneurs in Residence (EIR) of the Ventures @ CICS initiative at CICS. The course is grounded in Challenge Based Learning (CBL), an active, student-directed instructional framework that was developed by Apple Inc. and educators.",
+		"credits": 3
+	},
+	{
+		"id": "CS429",
+		"subject": "COMPSCI",
+		"courseNumber": "429",
+		"prereqs": [
+			[ {"id": "CS320", "grade": "A-"} ]
+		],
+		"majorReqs": ["E400"],
+		"title": "Software Engineering Project Management",
+		"description": "Practical experience in the management of software development projects. Managing people, coaching, mentoring, planning, scheduling, evaluation, negotiation, and expectation management are explored. The focus is on the power of communication.",
+		"credits": 3
+	},
+	{
+		"id": "CS445",
+		"subject": "COMPSCI",
+		"courseNumber": "445",
+		"prereqs": [
+			[ {"id": "CS220", "grade": "C"}, {"id": "CS311", "grade": "C"}, {"id": "CS345", "grade": "C"} ],
+			[ {"id": "CS230", "grade": "C"}, {"id": "CS311", "grade": "C"}, {"id": "CS345", "grade": "C"} ]
+		],
+		"majorReqs": ["E400"],
+		"title": "Information Systems",
+		"description": "Introduction to the efficient management of large-scale data. Principles for representing information in the relational model; query languages for analyzing and manipulating data (SQL and others); core systems principles for data management (file organizations, query optimization, indexing, distributed data processing, concurrency control) and distributed data processing paradigms.",
+		"credits": 3
+	},
+	{
+		"id": "CS446",
+		"subject": "COMPSCI",
+		"courseNumber": "446",
+		"prereqs": [
+			[ {"id": "CS240", "grade": "C"} ],
+			[ {"id": "CS383", "grade": "C"} ]
+		],
+		"majorReqs": ["E400"],
+		"title": "Search Engines",
+		"description": "This course provides an overview of the important issues in information retrieval, and how those issues affect the design and implementation of search engines. The course emphasizes the technology used in Web search engines, and the information retrieval theories and concepts that underlie all search applications.",
+		"credits": 3
+	},
+	{
+		"id": "CS453",
+		"subject": "COMPSCI",
+		"courseNumber": "453",
+		"prereqs": [
+			[ {"id": "CS230", "grade": "C"} ],
+			[ {"id": "CS377", "grade": "C"} ]
+		],
+		"majorReqs": ["E400"],
+		"title": "Computer Networks",
+		"description": "Introduction to computer communication networks and protocols. Fundamental concepts in the design and analysis of computer networks. Topics include: layered network architectures, networked applications, network programming interfaces, transport, congestion, routing, data link protocols, local area and data center networks, network security, and wireless networks. Examples drawn from the Internet (e.g., TCP, UDP, and IP) protocol suite.",
+		"credits": 3
+	},
+	{
+		"id": "CS461",
+		"subject": "COMPSCI",
+		"courseNumber": "461",
+		"prereqs": [
+			[ {"id": "CS326", "grade": "C"} ],
+			[ {"id": "CS345", "grade": "C"} ],
+			[ {"id": "CS377", "grade": "C"} ],
+			[ {"id": "CS453", "grade": "C"} ]
+		],
+		"majorReqs": ["E400"],
+		"title": "Secure Distributed Systems",
+		"description": "This is a class devoted to the study of securing distributed systems, with blockchain-based cryptocurrencies serving as our real platform of interest. We'll start with the fundamentals of Lamport's, Fischer's, and Douceur's results that fence-in all consensus system, and discuss Byzantine fault tolerance.  We'll also look at the efficiency of the network architectures for peer-to-peer/distributed system communication and attacks on their security, such as denial of service attacks. And we'll review relevant applied cryptography such as elliptic curves. We'll discuss in detail the mechanisms of Bitcoin and Ethereum and we'll program distributed applications for Ethereum. Other topics include economics and finance.",
+		"credits": 3
+	},
+	{
+		"id": "MATH411",
+		"subject": "MATH",
+		"courseNumber": "411",
+		"prereqs": [
+			[ {"id": "MATH235", "grade": "C"}, {"id": "CS250", "grade": "C"} ],
+			[ {"id": "MATH235", "grade": "C"}, {"id": "MATH300", "grade": "C"} ]
+		],
+		"majorReqs": ["OE"],
+		"title": "Introduction to Abstract Algebra I",
+		"description": "Introduction to groups, rings, fields, vector spaces, and related concepts. Emphasis on development of careful mathematical reasoning.",
+		"credits": 3
+	},
+	{
+		"id": "MATH455",
+		"subject": "MATH",
+		"courseNumber": "455",
+		"prereqs": [
+			[ {"id": "MATH131", "grade": "C"}, {"id": "MATH132", "grade": "C"}, {"id": "MATH233", "grade": "C"}, {"id": "MATH235", "grade": "C"}, {"id": "MATH300", "grade": "C"} ],
+			[ {"id": "MATH131", "grade": "C"}, {"id": "MATH132", "grade": "C"}, {"id": "MATH233", "grade": "C"}, {"id": "MATH235", "grade": "C"}, {"id": "CS250", "grade": "C"} ]
+		],
+		"majorReqs": [],
+		"title": "Introduction to Discrete Structures",
+		"description": "This is a rigorous introduction to some topics in mathematics that underlie areas in computer science and computer engineering, including graphs and trees, spanning trees, and matchings; the pigeonhole principle, induction and recursion, generating functions, and discrete probability proofs (time permitting). The course integrates learning mathematical theories with applications to concrete problems from other disciplines using discrete modeling techniques. Student groups will be formed to investigate a concept or an application related to discrete mathematics, and each group will report its findings to the class in a final presentation.",
+		"credits": 3
+	},
+	{
+		"id": "LINGUIST401",
+		"subject": "LINGUIST",
+		"courseNumber": "401",
+		"prereqs": [
+			[ {"id": "LINGUIST201", "grade": "C"} ]
+		],
+		"majorReqs": ["OE"],
+		"title": "Introduction to Syntax",
+		"description": "Introduction to syntactic theory, with implications for universal grammar and grammatical theory in general. Topics include theories of phrase structure, the form and functioning of transformations, grammatical relations, anaphora and control, word order problems, universals of grammar, relations between grammatical theory and learnability, language acquisition.",
+		"credits": 3
+	},
+	{
+		"id": "MATH545",
+		"subject": "MATH",
+		"courseNumber": "545",
+		"prereqs": [
+			[ {"id": "MATH233", "grade": "C"}, {"id": "MATH235", "grade": "C"}, {"id": "CS250", "grade": "C"} ],
+			[ {"id": "MATH233", "grade": "C"}, {"id": "MATH235", "grade": "C"}, {"id": "MATH300", "grade": "C"} ]
+		],
+		"majorReqs": ["OE"],
+		"title": "Linear Algebra for Applied Mathematics",
+		"description": "Basic concepts (over real or complex numbers): vector spaces, basis, dimension, linear transformations and matrices, change of basis, similarity. Study of a single linear operator: minimal and characteristic polynomial, eigenvalues, invariant subspaces, triangular form, Cayley-Hamilton theorem. Inner product spaces and special types of linear operators (over real or complex fields): orthogonal, unitary, self-adjoint, hermitian. Diagonalization of symmetric matrices, applications. Homeworks include programming projects.",
+		"credits": 3
+	},
+	{
+		"id": "MATH551",
+		"subject": "MATH",
+		"courseNumber": "551",
+		"prereqs": [
+			[ {"id": "MATH233", "grade": "C"}, {"id": "MATH235", "grade": "C"}, {"id": "CS121", "grade": "C"} ]
+		],
+		"majorReqs": ["OE"],
+		"title": "Introduction to Scientific Computing",
+		"description": "Introduction to computational techniques used in science and industry. Topics selected from root-finding, interpolation, data fitting, linear systems, numerical integration, numerical solution of differential equations, and error analysis.",
+		"credits": 3
+	},
+	{
+		"id": "MATH552",
+		"subject": "MATH",
+		"courseNumber": "552",
+		"prereqs": [
+			[ {"id": "MATH233", "grade": "C"}, {"id": "MATH235", "grade": "C"}, {"id": "MATH551", "grade": "C"} ]
+		],
+		"majorReqs": ["OE"],
+		"title": "Applications for Scientific Computing",
+		"description": "Introduction to the application of computational methods to models arising in science and engineering, concentrating mainly on the solution of partial differential equations. Topics include finite differences, finite elements, boundary value problems, fast Fourier transforms.",
+		"credits": 3
+	},
+	{
+		"id": "STAT515",
+		"subject": "STATISTC",
+		"courseNumber": "515",
+		"prereqs": [
+			[ {"id": "MATH132", "grade": "C"} ]
+		],
+		"majorReqs": ["MATH3"],
+		"title": "Statistics I",
+		"description": "First semester of a two-semester sequence. Emphasis given to probability theory necessary for application to and understanding of statistical inference. Probability models, sample spaces, conditional probability, independence. Random variables, expectation, variance, and various discrete and continuous probability distributions. Sampling distributions, the Central Limit Theorem and normal approximations. Multivariate calculus introduced as needed.",
+		"credits": 3
+	},
+	{
+		"id": "ECE547",
+		"subject": "ECE",
+		"courseNumber": "547",
+		"prereqs": [],
+		"majorReqs": ["OE"],
+		"title": "Security Engineering",
+		"description": "This course provides an introduction to the new area of Security Engineering, and provides examples drawn from recent research at UMASS and elsewhere. Security Engineering is a multi-disciplinary field combining technical aspects of Applied Cryptography, Computer Engineering, and Networking as well as issues from Psychology, Sociology, Policy and Economics. Several guest lectures will be presented by experts in these disciplines.Introduction to the application of computational methods to models arising in science and engineering, concentrating mainly on the solution of partial differential equations. Topics include finite differences, finite elements, boundary value problems, fast Fourier transforms.",
+		"credits": 3
+	},
+	{
+		"id": "ECE668",
+		"subject": "ECE",
+		"courseNumber": "668",
+		"prereqs": [],
+		"majorReqs": ["OE"],
+		"title": "Security Engineering",
+		"description": "Quantitative study of pipelined processor architectures, memory, Input/Output,  RISC processors and vector machines.",
+		"credits": 3
 	}
 ]
