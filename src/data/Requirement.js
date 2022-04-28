@@ -1,4 +1,5 @@
 import { getCourseData } from "./getData";
+import { results } from "./Result";
 
 export default class Requirement {
     constructor(reqJson) {
@@ -16,19 +17,11 @@ export default class Requirement {
 
             if (this.progress > this.target || this.progress < 0) return false;
 
-            return true;
+            return results.SUCCESS;
         }
 
-        return false;
+        return results.FAIL_UPDATE_REQS;
     }
-
-    // toJSON() {
-    //     return {
-    //         id: this.id,
-    //         progress: this.progress,
-    //         target: this.target,
-    //     };
-    // }
 
     clone() {
         return new Requirement(this.getStatus());

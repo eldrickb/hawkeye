@@ -1,4 +1,5 @@
 import { getCourseData } from "./getData";
+import { results } from "./Result";
 
 export default class CourseList {
     constructor(courseJson) {
@@ -13,10 +14,10 @@ export default class CourseList {
     addCourseObject(course) {
         if (course.id) {
             this.courses[course.id] = course;
-            return true;
+            return results.SUCCESS;
         }
 
-        return false;
+        return results.FAIL_ADD_COURSE;
     }
 
     addCourseById(courseId) {
@@ -29,27 +30,27 @@ export default class CourseList {
             }
         }
 
-        return false;
+        return results.FAIL_ADD_COURSE;
     }
 
     removeCourseById(courseId) {
         if (this.courses[courseId]) {
             this.courses[courseId] = null;
-            return true;
+            return results.SUCCESS;
         }
-        return false;
+        return results.FAIL_REMOVE_COURSE;
     }
 
     has(id) {
-        if (this.courses[id]) return true;
-        return false;
+        if (this.courses[id]) return results.SUCCESS;
+        return results.FAIL;
     }
 
     get(id) {
         if (this.courses[id]) {
             return this.courses[id];
         }
-        return false;
+        return results.FAIL;
     }
 
     toJSON() {

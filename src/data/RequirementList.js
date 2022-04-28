@@ -1,5 +1,6 @@
 import { getReqData } from "./getData";
 import Requirement from "./Requirement";
+import { results } from "./Result";
 
 export default class RequirementList {
     constructor(reqsJson) {
@@ -16,10 +17,10 @@ export default class RequirementList {
 
         if (req) {
             this.reqs[req.id] = new Requirement(req);
-            return true;
+            return results.SUCCESS;
         }
 
-        return false;
+        return results.FAIL_ADD_REQ;
     }
 
     removeReqById(reqId) {
@@ -40,12 +41,12 @@ export default class RequirementList {
     }
 
     updateReqByCourse(course, isAdding = true) {
-        let foundOne = false;
+        let foundOne = results.FAIL_UPDATE_REQS;
 
         course.majorReqs.forEach((reqId) => {
             if (!foundOne) {
                 this.get(reqId).update(course, isAdding);
-                foundOne = true;
+                foundOne = results.SUCCESS;
             }
         });
 

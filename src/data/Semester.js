@@ -1,5 +1,6 @@
 import CourseList from "./CourseList";
 import RequirementList from "./RequirementList";
+import { results } from "./Result";
 
 export class Semester {
     constructor(id, semesterJson) {
@@ -24,7 +25,7 @@ export class Semester {
             return this.reqs.updateReqByCourse(course);
         }
 
-        return false;
+        return results.FAIL_ADD_COURSE;
     }
     removeCourse(courseId) {
         return this.courses.remove(courseId);
@@ -43,12 +44,6 @@ export class Semester {
     getReqs() {
         return this.reqs;
     }
-
-    // static createId(semesterId) {
-    //     if (!semesterId.season || !semesterId.year) return false;
-
-    //     semesterId.string =
-    // }
 }
 
 export class ScheduleBuilder {

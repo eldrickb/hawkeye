@@ -1,9 +1,10 @@
+import { results } from "./Result";
 import { Semester } from "./Semester";
 
 export default class Schedule {
     constructor(scheduleJson) {
         this.semesters = {};
-        this.years = {};
+        this.years = [];
 
         if (scheduleJson) {
             for (const [key, value] of Object.entries(scheduleJson.semesters))
@@ -14,21 +15,20 @@ export default class Schedule {
     addSemester(semesterId) {
         this.semesters[semesterId] = new Semester(semesterId);
 
-        return true;
+        return results.SUCCESS;
     }
 
     addCourse(courseId, semesterId) {
         // Add course
 
         if (!this.semesters[semesterId]) {
-            if (!this.addSemester(semesterId)) return false;
+            if (!this.addSemester(semesterId)) return results.FAIL_ADD_COURSE;
         }
 
         return this.semesters[semesterId].addCourseById(courseId);
     }
 
-    //
-    verifyPrereqes(courseId, semesterId) {
+    verifyPrereqs(courseId, semesterId) {
         //
     }
 
