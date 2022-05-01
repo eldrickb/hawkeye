@@ -1,3 +1,4 @@
+import r from "next/dist/compiled/etag";
 import { getReqData } from "./getData";
 import Requirement from "./Requirement";
 import { results } from "./Result";
@@ -61,10 +62,6 @@ export default class RequirementList {
         return req.update(courseId);
     }
 
-    getStatus() {
-        return this.reqs.map((req) => req.getStatus());
-    }
-
     clone() {
         const newList = new RequirementsList();
 
@@ -73,6 +70,15 @@ export default class RequirementList {
         });
 
         return newList;
+    }
+
+    getUnfinished() {
+        const res = {};
+
+        for (let [key, val] of Object.entries(this.reqs))
+            if (val.status !== "COMPLETE") res[key] = val;
+
+        return res;
     }
 
     toJSON() {

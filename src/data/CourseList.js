@@ -20,7 +20,7 @@ export default class CourseList {
         return results.FAIL_ADD_COURSE;
     }
 
-    addCourseById(courseId) {
+    addById(courseId) {
         courseId = courseId.toUpperCase();
 
         if (courseId) {

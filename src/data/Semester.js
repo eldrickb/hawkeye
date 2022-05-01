@@ -18,7 +18,7 @@ export class Semester {
 
     addCourseById(courseId) {
         // check prereqs
-        const course = this.courses.addCourseById(courseId);
+        const course = this.courses.addById(courseId);
 
         // update prereqs
         if (course !== results.FAIL_ADD_COURSE) {
@@ -44,6 +44,13 @@ export class Semester {
 
     getReqs() {
         return this.reqs;
+    }
+
+    updateReqsWithPrevious(prevReqs) {
+        if (prevReqs) this.reqs = new RequirementList(prevReqs);
+        for (let value of Object.values(this.courses.courses)) {
+            this.reqs.updateReqByCourse(value);
+        }
     }
 
     static getIdParts(semesterId) {

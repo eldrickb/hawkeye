@@ -76,7 +76,11 @@ export default class Schedule {
         if (!this.verifyPrereqs(courseId, semesterId))
             return results.FAIL_VALIDATE_PREREQS;
 
-        return this.semesters[semesterId].addCourseById(courseId);
+        const result = this.semesters[semesterId].addCourseById(courseId);
+
+        if (!validate(result).success) return result.message;
+
+        return this.updateReqs(semesterId);
     }
 
     getIterableSemList() {
@@ -93,7 +97,9 @@ export default class Schedule {
         // moving backwards, check sems for prereqs
         const semList = this.getIterableSemList();
 
-        let prereqGroups = getCourseData(courseId).prereqs;
+        let prereqGroups = JSON.parse(
+            JSON.stringify(getCourseData(courseId).prereqs),
+        );
         if (prereqGroups.length === 0) return true;
 
         let i = semList.indexOf(semesterId) - 1;
@@ -138,6 +144,31 @@ export default class Schedule {
     }
 
     updateReqs(semesterId) {
-        //
+        // get sem list
+
+        const semList = this.getIterableSemList();
+
+        let i = semList.findIndex((sem) => sem === semesterId);
+
+        if (i < 0) return results.FAIL_UPDATE_REQS;
+
+        // for each sem: get last reqs, insert them, update all (and update change),
+        let prevReqs, currSem;
+        do {
+            if (i > 0)
+                prevReqs = this.getSemester(
+                    semList[i - 1],
+                ).reqs.getUnfinished();
+
+            currSem = this.getSemester(semList[i]);
+
+            currSem.updateReqsWithPrevious(prevReqs);
+
+            currSem.updateReqs;
+
+            i++;
+        } while (i < semList.length);
+
+        return results.SUCCESS;
     }
 }
