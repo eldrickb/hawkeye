@@ -6,8 +6,8 @@ export default class CourseList {
         this.courses = {};
 
         if (courseJson) {
-            for (const [key, value] of Object.entries(courseJson.semesters))
-                this.courses[key] = new Requirement(value);
+            for (const [key, value] of Object.entries(courseJson))
+                this.courses[key] = value;
         }
     }
 
@@ -21,6 +21,8 @@ export default class CourseList {
     }
 
     addCourseById(courseId) {
+        courseId = courseId.toUpperCase();
+
         if (courseId) {
             const match = getCourseData(courseId);
 
@@ -42,11 +44,20 @@ export default class CourseList {
     }
 
     has(id) {
-        if (this.courses[id]) return results.SUCCESS;
-        return results.FAIL;
+        console.log(
+            "checking " +
+                id +
+                " in " +
+                JSON.stringify(this.courses) +
+                " result " +
+                (this.courses[id] ? true : false),
+        );
+        if (this.courses[id]) return true;
+        return false;
     }
 
     get(id) {
+        id = id.toUpperCase();
         if (this.courses[id]) {
             return this.courses[id];
         }

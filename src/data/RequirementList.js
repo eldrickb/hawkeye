@@ -7,7 +7,7 @@ export default class RequirementList {
         this.reqs = {};
 
         if (reqsJson) {
-            for (const [key, value] of Object.entries(reqsJson.semesters))
+            for (const [key, value] of Object.entries(reqsJson))
                 this.reqs[key] = new Requirement(value);
         }
     }
@@ -41,16 +41,19 @@ export default class RequirementList {
     }
 
     updateReqByCourse(course, isAdding = true) {
-        let foundOne = results.FAIL_UPDATE_REQS;
+        if (!course.majorReqs || course.majorReqs.length < 1)
+            return results.SUCCESS;
+
+        let foundOne = false;
 
         course.majorReqs.forEach((reqId) => {
             if (!foundOne) {
                 this.get(reqId).update(course, isAdding);
-                foundOne = results.SUCCESS;
+                foundOne = true;
             }
         });
 
-        return foundOne;
+        return foundOne ? results.SUCCESS : results.FAIL_UPDATE_REQS;
     }
 
     updateReq(reqId, courseId) {

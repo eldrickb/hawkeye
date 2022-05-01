@@ -5,9 +5,11 @@ export default function handler(req, res) {
     if (req.method === "POST") {
         const schedule = new Schedule(req.body.schedule);
 
+        const result = validate(
+            schedule.addCourse(req.body.courseId, req.body.semesterId),
+        );
 
-        const result = validate(schedule.addCourse(req.body.courseId, req.body.semesterId)
-        if (!result.success)) {
+        if (!result.success) {
             res.status(500).json(result.message);
             return;
         }

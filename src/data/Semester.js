@@ -1,6 +1,6 @@
 import CourseList from "./CourseList";
 import RequirementList from "./RequirementList";
-import { results } from "./Result";
+import { results, validate } from "./Result";
 
 export class Semester {
     constructor(id, semesterJson) {
@@ -21,7 +21,7 @@ export class Semester {
         const course = this.courses.addCourseById(courseId);
 
         // update prereqs
-        if (course) {
+        if (course !== results.FAIL_ADD_COURSE) {
             return this.reqs.updateReqByCourse(course);
         }
 
@@ -31,10 +31,11 @@ export class Semester {
         return this.courses.remove(courseId);
     }
     hasCourse(courseId) {
-        return this.courses.has(id);
+        console.log("hasCourse called");
+        return this.courses.has(courseId);
     }
     getCourse(courseId) {
-        return this.courses.get(id);
+        return this.courses.get(courseId);
     }
 
     getCourses() {
@@ -43,6 +44,26 @@ export class Semester {
 
     getReqs() {
         return this.reqs;
+    }
+
+    static getIdParts(semesterId) {
+        const yearNum = parseInt(semesterId.slice(-2)),
+            season = semesterId.slice(0, -2).toLowerCase();
+
+        if (yearNum < 18 || yearNum > 99)
+            return results.FAIL_INVALID_SEMESTER_ID;
+
+        if (season !== "fall" || season !== "spring")
+            return results.FAIL_INVALID_SEMESTER_ID;
+
+        let yearId;
+        if (season === "fall") yearId = `${yearNum}-${yearNum + 1}`;
+        if (season === "sprinng") yearId = `${yearNum - 1}-${yearNum}`;
+
+        return {
+            season: season,
+            yearId: yearId,
+        };
     }
 }
 

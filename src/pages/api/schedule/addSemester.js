@@ -1,5 +1,5 @@
 import Schedule from "../../../data/Schedule";
-
+import { results, validate } from "../../../data/Result";
 export default function handler(req, res) {
     if (req.method === "POST") {
         const schedule = new Schedule(req.body.schedule);
@@ -10,8 +10,6 @@ export default function handler(req, res) {
             res.status(500).json(result.message);
             return;
         }
-
-        console.log(JSON.stringify(schedule));
 
         res.status(200).json({
             schedule: schedule,
