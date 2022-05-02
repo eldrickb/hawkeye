@@ -31,7 +31,6 @@ export class Semester {
         return this.courses.remove(courseId);
     }
     hasCourse(courseId) {
-        console.log("hasCourse called");
         return this.courses.has(courseId);
     }
     getCourse(courseId) {
@@ -57,15 +56,15 @@ export class Semester {
         const yearNum = parseInt(semesterId.slice(-2)),
             season = semesterId.slice(0, -2).toLowerCase();
 
-        if (yearNum < 18 || yearNum > 99)
+        if (yearNum < 18 && yearNum > 99)
             return results.FAIL_INVALID_SEMESTER_ID;
 
-        if (season !== "fall" || season !== "spring")
+        if (season != "fall" && season != "spring")
             return results.FAIL_INVALID_SEMESTER_ID;
 
         let yearId;
         if (season === "fall") yearId = `${yearNum}-${yearNum + 1}`;
-        if (season === "sprinng") yearId = `${yearNum - 1}-${yearNum}`;
+        if (season === "spring") yearId = `${yearNum - 1}-${yearNum}`;
 
         return {
             season: season,

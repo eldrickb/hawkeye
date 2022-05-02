@@ -7,8 +7,12 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import Schedule from "../data/Schedule";
 
-const Playground = (props) => {
+import demoSchedule from "../utils/clientSchedule";
+
+const Dashboard = (props) => {
     useEffect(() => {}, []);
 
-    return <div>hi</div>;
+    return <div>{JSON.stringify(demoSchedule)}</div>;
 };
+
+export default Dashboard;

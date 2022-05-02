@@ -55,7 +55,7 @@ export default class Schedule {
             });
 
             this.years.sort(
-                (y1, y2) => parseInt(y1.slice(2)) < parseInt(y2.slice(2)),
+                (y1, y2) => parseInt(y1.id.slice(2)) < parseInt(y2.id.slice(2)),
             );
         }
 
@@ -103,6 +103,7 @@ export default class Schedule {
         if (prereqGroups.length === 0) return true;
 
         let i = semList.indexOf(semesterId) - 1;
+        let verified = false;
 
         // loop thru semesters
         for (i; i >= 0; i--) {
@@ -110,26 +111,20 @@ export default class Schedule {
 
             // loop thru groups, deleting found prereqs
             for (let j = 0; j < prereqGroups.length; j++) {
-                const currGroup = prereqGroups[i];
+                const currGroup = prereqGroups[j];
 
                 // once a prereq group is empty (all found), prereqs are fulfilled
 
-                if (currGroup.length === 0) return true;
+                if (currGroup.length === 0) verified = true;
 
                 currGroup.forEach((prereq, k) => {
-                    console.log(
-                        "group " +
-                            JSON.stringify(prereq) +
-                            +currentSem.hasCourse(prereq.id) +
-                            "jahsjklhdf",
-                    );
-
                     if (currentSem.hasCourse(prereq.id)) {
-                        console.log("F");
                         currGroup.splice(k, 1);
-                        if (currGroup.length === 0) return true;
+                        if (currGroup.length === 0) verified = true;
                     }
                 });
+
+                if (verified) return true;
             }
         }
 

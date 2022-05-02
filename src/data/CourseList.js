@@ -44,14 +44,6 @@ export default class CourseList {
     }
 
     has(id) {
-        console.log(
-            "checking " +
-                id +
-                " in " +
-                JSON.stringify(this.courses) +
-                " result " +
-                (this.courses[id] ? true : false),
-        );
         if (this.courses[id]) return true;
         return false;
     }

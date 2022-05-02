@@ -5,14 +5,11 @@ export default function handler(req, res) {
     if (req.method === "POST") {
         let schedule = new Schedule(req.body.schedule);
 
-        console.log(schedule);
-
         const result = validate(
             schedule.addCourse(req.body.courseId, req.body.semesterId),
         );
 
         if (!result.success) {
-            console.log("FAIL");
             res.status(500).json(result.message);
             return;
         }

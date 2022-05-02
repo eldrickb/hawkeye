@@ -1,4 +1,3 @@
-import r from "next/dist/compiled/etag";
 import { getReqData } from "./getData";
 import Requirement from "./Requirement";
 import { results } from "./Result";
