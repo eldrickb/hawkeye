@@ -15,7 +15,9 @@ const store = init({
         // TODO: make work
         rootReducers: { reset: () => undefined },
     },
-    plugins: [persistPlugin(persistConfig)],
+    plugins: [
+        // persistPlugin(persistConfig)
+    ],
 });
 
 export default store;

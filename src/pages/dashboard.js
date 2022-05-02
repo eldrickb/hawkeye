@@ -7,12 +7,13 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import Schedule from "../data/Schedule";
 
-import demoSchedule from "../utils/clientSchedule";
-
 const Dashboard = (props) => {
     useEffect(() => {}, []);
 
-    return <div>{JSON.stringify(demoSchedule)}</div>;
+    return <div>{JSON.stringify(props.schedule)}</div>;
 };
 
-export default Dashboard;
+const mapState = (state) => ({
+    schedule: state.user.schedule,
+});
+export default connect(mapState)(Dashboard);
